@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Hospi Link - Premium Navbar</title>
+    <title>HospiLink - Modern Healthcare Solutions</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Quicksand:wght@400;500;600;700&display=swap" rel="stylesheet">
@@ -17,6 +17,8 @@
         body {
             font-family: 'Poppins', sans-serif;
             background-color: #f8fafc;
+            color: #334155;
+            overflow-x: hidden;
         }
         
         .navbar {
@@ -26,8 +28,10 @@
             padding: 1.2rem 2%;
             background-color: #ffffff;
             box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
-            position: sticky;
+            position: fixed;
             top: 0;
+            left: 0;
+            right: 0;
             z-index: 1000;
             border-bottom: 1px solid rgba(0, 110, 255, 0.1);
         }
@@ -170,6 +174,124 @@
             box-shadow: 0 6px 16px rgba(2, 132, 199, 0.4);
         }
         
+        /* Hero Sections */
+        .hero-section {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            padding: 80px 8%;
+            position: relative;
+            overflow: hidden;
+            scroll-margin-top: 80px;
+        }
+        
+        .tired-section {
+            background: linear-gradient(135deg, #f5f7fa 0%, #e4eff8 100%);
+        }
+        
+        .solution-section {
+            background: linear-gradient(135deg, #e6f7ff 0%, #f0f9ff 100%);
+        }
+        
+        .hero-content {
+            width: 50%;
+            z-index: 2;
+        }
+        
+        .hero-image {
+            width: 50%;
+            position: relative;
+            z-index: 2;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        
+        .hero-image img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 20px;
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+        }
+        
+        .hero-tagline {
+            font-size: 3.2rem;
+            font-weight: 700;
+            margin-bottom: 1.5rem;
+            line-height: 1.2;
+            color: #1e293b;
+        }
+        
+        .hero-tagline span {
+            color: #0284c7;
+            position: relative;
+            display: inline-block;
+        }
+        
+        .hero-tagline span:after {
+            content: '';
+            position: absolute;
+            bottom: 5px;
+            left: 0;
+            width: 100%;
+            height: 12px;
+            background-color: rgba(2, 132, 199, 0.1);
+            z-index: -1;
+            border-radius: 10px;
+        }
+        
+        .hero-description {
+            font-size: 1.2rem;
+            line-height: 1.6;
+            color: #475569;
+            margin-bottom: 2rem;
+            max-width: 90%;
+        }
+        
+        .hero-description .warning {
+            color: #f97316;
+            font-weight: 600;
+            font-style: italic;
+        }
+        
+        .decorative-circle {
+            position: absolute;
+            border-radius: 50%;
+            z-index: 1;
+        }
+        
+        .circle-1 {
+            width: 300px;
+            height: 300px;
+            background-color: rgba(14, 165, 233, 0.08);
+            top: -100px;
+            right: -100px;
+        }
+        
+        .circle-2 {
+            width: 200px;
+            height: 200px;
+            background-color: rgba(56, 189, 248, 0.1);
+            bottom: -50px;
+            left: -80px;
+        }
+        
+        .circle-3 {
+            width: 250px;
+            height: 250px;
+            background-color: rgba(2, 132, 199, 0.06);
+            bottom: 20%;
+            right: 15%;
+        }
+        
+        .circle-4 {
+            width: 180px;
+            height: 180px;
+            background-color: rgba(186, 230, 253, 0.4);
+            top: 15%;
+            left: 10%;
+        }
+        
         @media (max-width: 768px) {
             .navbar {
                 flex-direction: column;
@@ -207,6 +329,33 @@
             .brand-name {
                 font-size: 1.5rem;
             }
+            
+            .hero-section {
+                flex-direction: column;
+                padding: 120px 5% 60px;
+                text-align: center;
+            }
+            
+            .hero-content, .hero-image {
+                width: 100%;
+            }
+            
+            .hero-content {
+                margin-bottom: 3rem;
+            }
+            
+            .hero-tagline {
+                font-size: 2.5rem;
+            }
+            
+            .hero-description {
+                max-width: 100%;
+                font-size: 1.1rem;
+            }
+            
+            .hero-image img {
+                max-width: 90%;
+            }
         }
     </style>
 </head>
@@ -233,5 +382,37 @@
             <a href="#login" class="btn-login">Login</a>
         </div>
     </nav>
+
+    <!-- First Section - Tired Person -->
+    <section id="tired" class="hero-section tired-section">
+        <div class="hero-content">
+            <h1 class="hero-tagline">Tired of hospitals and waiting for a <span>miracle?</span></h1>
+            <p class="hero-description">Long wait times, missed appointments, and complex hospital systems can leave anyone exhausted. We understand the frustration that comes with navigating healthcare systems.</p>
+        </div>
+        
+        <div class="hero-image">
+            <img src="Leonardo_Phoenix_09_A_weary_individual_likely_in_their_mid30s_3.jpg" alt="Tired person frustrated with hospital experience">
+        </div>
+        
+        <!-- Decorative elements -->
+        <div class="decorative-circle circle-1"></div>
+        <div class="decorative-circle circle-2"></div>
+    </section>
+    
+    <!-- Second Section - Happy Person -->
+    <section id="solution" class="hero-section solution-section">
+        <div class="hero-image">
+            <img src="Leonardo_Phoenix_09_A_beaming_person_with_a_bright_smile_likel_2.jpg" alt="Happy person using HospiLink service">
+        </div>
+        
+        <div class="hero-content">
+            <h1 class="hero-tagline">Don't worry <span>anymore</span></h1>
+            <p class="hero-description">HospiLink is here to help you reach your appointments on time and effortlessly. We streamline your healthcare journey with timely reminders and simplified processes. </p>
+        </div>
+        
+        <!-- Decorative elements -->
+        <div class="decorative-circle circle-3"></div>
+        <div class="decorative-circle circle-4"></div>
+    </section>
 </body>
 </html>
