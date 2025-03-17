@@ -292,6 +292,15 @@
             left: 10%;
         }
         
+        /* Fix for the second section spacing */
+        .solution-section .hero-image {
+            padding-right: 5%;
+        }
+        
+        .solution-section .hero-content {
+            padding-left: 5%;
+        }
+        
         @media (max-width: 768px) {
             .navbar {
                 flex-direction: column;
@@ -332,16 +341,16 @@
             
             .hero-section {
                 flex-direction: column;
-                padding: 120px 5% 60px;
+                padding: 100px 5% 60px;
                 text-align: center;
             }
             
             .hero-content, .hero-image {
-                width: 100%;
+                width: 85%;
             }
             
             .hero-content {
-                margin-bottom: 3rem;
+                margin-bottom: 2rem;
             }
             
             .hero-tagline {
@@ -354,7 +363,13 @@
             }
             
             .hero-image img {
-                max-width: 90%;
+                max-width: 50%;
+            }
+            
+            /* Maintain spacing in mobile view */
+            .solution-section .hero-image,
+            .solution-section .hero-content {
+                padding: 0;
             }
         }
     </style>
@@ -386,8 +401,8 @@
     <!-- First Section - Tired Person -->
     <section id="tired" class="hero-section tired-section">
         <div class="hero-content">
-            <h1 class="hero-tagline">Tired of hospitals and waiting for a <span>miracle?</span></h1>
-            <p class="hero-description">Long wait times, missed appointments, and complex hospital systems can leave anyone exhausted. We understand the frustration that comes with navigating healthcare systems.</p>
+            <h1 class="hero-tagline">Tired of hospital <span>Maze?</span></h1>
+            <p class="hero-description">Unfoundable Rooms, missed appointments, and complex hospital structure can leave anyone exhausted. We understand the frustration that comes with navigating healthcare systems.</p>
         </div>
         
         <div class="hero-image">
@@ -402,12 +417,12 @@
     <!-- Second Section - Happy Person -->
     <section id="solution" class="hero-section solution-section">
         <div class="hero-image">
-            <img src="Leonardo_Phoenix_09_A_beaming_person_with_a_bright_smile_likel_2.jpg" alt="Happy person using HospiLink service">
+            <img src="WhatsApp Image 2025-03-17 at 22.43.31 (1).jpeg" alt="Happy person using HospiLink service">
         </div>
         
         <div class="hero-content">
             <h1 class="hero-tagline">Don't worry <span>anymore</span></h1>
-            <p class="hero-description">HospiLink is here to help you reach your appointments on time and effortlessly. We streamline your healthcare journey with timely reminders and simplified processes. </p>
+            <p class="hero-description">  HospiLink is here to help you reach your appointments on time and effortlessly. We streamline your healthcare journey with accurate room no and routes. </p>
         </div>
         
         <!-- Decorative elements -->
