@@ -548,7 +548,7 @@
                 <div class="auth-image-content">
                     <h2>Welcome to HospiLink</h2>
                     <p>Navigate hospital corridors with confidence. We're here to simplify your healthcare journey.</p>
-                    <img src="/api/placeholder/300/200" alt="Hospital navigation illustration" style="max-width: 80%; border-radius: 12px;">
+                    <img src="" alt="Hospital navigation illustration" style="max-width: 80%; border-radius: 12px;">
                 </div>
                 <div class="auth-image-circles">
                     <div class="image-circle image-circle-1"></div>
@@ -673,6 +673,12 @@
             <div class="decorative-circle circle-2"></div>
             <div class="decorative-circle circle-3"></div>
         </main>
+        <!-- Firebase SDK -->
+<script type="module">
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/10.9.0/firebase-app.js";
+    console.log("Firebase SDK Loaded");
+</script>
+<script type="module" src="firebase-auth.js"></script>
     
         <script>
             // JavaScript to toggle between Sign In and Sign Up forms
@@ -725,6 +731,11 @@
                     alert('Please agree to the Terms & Conditions.');
                 }
             });
+
+            
         </script>
+        
+     
+
     </body>
     </html>
