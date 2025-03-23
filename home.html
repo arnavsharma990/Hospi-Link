@@ -6,7 +6,7 @@
   <title>Hospilinks Premium</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&family=Playfair+Display:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
   <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
   <style>
     /* Premium Design System */
@@ -35,14 +35,14 @@
     }
     
     body {
-      font-family: 'Montserrat', sans-serif;
+      font-family: 'Poppins', sans-serif;
       background-color: var(--light);
       color: var(--dark);
       line-height: 1.7;
     }
     
     h1, h2, h3, h4 {
-      font-family: 'Playfair Display', serif;
+      font-family: 'Poppins', sans-serif;
       font-weight: 700;
       letter-spacing: -0.025em;
     }
@@ -154,7 +154,7 @@
       padding: 1rem 1.5rem;
       border: none;
       outline: none;
-      font-family: 'Montserrat', sans-serif;
+      font-family: 'Poppins', sans-serif;
       font-size: 1rem;
     }
     
@@ -220,7 +220,7 @@
       border: 1px solid var(--light-gray);
       border-radius: 999px;
       padding: 0.75rem 1.5rem;
-      font-family: 'Montserrat', sans-serif;
+      font-family: 'Poppins', sans-serif;
       font-weight: 500;
       color: var(--dark-gray);
       cursor: pointer;
@@ -243,12 +243,15 @@
     }
     
     .hospital-card {
-      background-color: var(--white);
-      border-radius: 1rem;
-      overflow: hidden;
-      box-shadow: var(--shadow-md);
-      transition: var(--transition);
-      position: relative;
+      display: flex;
+  flex-direction: column;
+  height: 100%;
+  background-color: var(--white);
+  border-radius: 1rem;
+  overflow: hidden;
+  box-shadow: var(--shadow-md);
+  transition: var(--transition);
+  position: relative;
     }
     
     .hospital-card:hover {
@@ -276,7 +279,7 @@
     
     .hospital-card img {
       width: 100%;
-      height: 200px;
+      height: 400px;
       object-fit: cover;
       transition: var(--transition);
     }
@@ -286,15 +289,30 @@
     }
     
     .hospital-content {
-      padding: 1.75rem;
+      display: flex;
+  flex-direction: column;
+  height:100%;
+  background-color: var(--white);
+  border-radius: 1rem;
+  overflow: hidden;
+  box-shadow: var(--shadow-md);
+  transition: var(--transition);
+  position: relative;
     }
     
     .hospital-card h3 {
-      margin-bottom: 0.5rem;
-      color: var(--dark);
-      font-size: 1.5rem;
-      transition: var(--transition);
-    }
+  height: 5.00rem;
+  overflow: hidden;
+  display: -webkit-box;
+    -webkit-line-clamp: 2; /* Limits text to 2 lines */
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  margin-bottom: 0.5rem;
+  color: var(--dark);
+  font-size: 1.5rem;
+  transition: var(--transition);
+  padding: 1px;
+}
     
     .hospital-card:hover h3 {
       color: var(--primary);
@@ -317,19 +335,21 @@
     }
     
     .specialty {
-      display: block;
-      font-size: 0.9rem;
-      color: var(--dark-gray);
-      margin-bottom: 1.25rem;
-      font-weight: 500;
+    display: block;
+    font-size: 0.9rem;
+    color: var(--dark-gray);
+    margin-bottom: 1.25rem;
+    font-weight: 500;
+    height: 1.5rem;
     }
     
     .hospital-features {
-      display: flex;
-      gap: 1rem;
-      flex-wrap: wrap;
-      margin-bottom: 1.5rem;
-    }
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+  margin-bottom: 1.5rem;
+  min-height: 4rem;
+}
     
     .feature {
       display: flex;
@@ -344,16 +364,17 @@
     }
     
     .availability {
-      background: linear-gradient(to right, var(--primary), var(--primary-light));
-      color: var(--white);
-      padding: 0.75rem 1.25rem;
-      border-radius: 0.5rem;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      font-weight: 500;
-      transition: var(--transition);
-    }
+  margin-top: auto;
+  background: linear-gradient(to right, var(--primary), var(--primary-light));
+  color: var(--white);
+  padding: 0.75rem 1.25rem;
+  border-radius: 0.5rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-weight: 500;
+  transition: var(--transition);
+}
     
     .availability:hover {
       transform: translateY(-3px);
@@ -398,7 +419,7 @@
     .btn {
       padding: 0.75rem 2rem;
       border-radius: 999px;
-      font-family: 'Montserrat', sans-serif;
+      font-family: 'Poppins', sans-serif;
       font-weight: 600;
       text-decoration: none;
       transition: var(--transition);
@@ -616,10 +637,10 @@
       <div class="hospital-card">
         <div class="premium-badge">Premium</div>
         <div class="hospital-img">
-          <img src="/api/placeholder/400/320" alt="City General Hospital">
+          <img src="https://listmyclinic.com/wp-content/uploads/2021/07/AIIMS-delhi.jpg" alt="AIIMS Hospital">
         </div>
         <div class="hospital-content">
-          <h3>City General Hospital</h3>
+          <h3>All India Institute of Medical Sciences (AIIMS)</h3>
           <div class="rating">
             <div class="stars">
               <i class="fas fa-star"></i>
@@ -634,7 +655,7 @@
           <div class="hospital-features">
             <div class="feature">
               <i class="fas fa-procedures"></i>
-              <span>500+ Beds</span>
+              <span>2000+ Beds</span>
             </div>
             <div class="feature">
               <i class="fas fa-ambulance"></i>
@@ -647,7 +668,7 @@
           </div>
           <div class="availability">
             <span>Doctors Available</span>
-            <span class="doctor-count">25</span>
+            <span class="doctor-count">120</span>
           </div>
         </div>
       </div>
@@ -655,10 +676,10 @@
       <!-- Hospital 2 -->
       <div class="hospital-card">
         <div class="hospital-img">
-          <img src="/api/placeholder/400/320" alt="Green Valley Hospital">
+          <img src="https://medicaldialogues.in/h-upload/2023/03/04/203978-abvims.webp"  alt="Dr. Ram Manohar Lohia Hospital">
         </div>
         <div class="hospital-content">
-          <h3>Green Valley Hospital</h3>
+          <h3>Dr. Ram Manohar Lohia Hospital</h3>
           <div class="rating">
             <div class="stars">
               <i class="fas fa-star"></i>
@@ -673,7 +694,7 @@
           <div class="hospital-features">
             <div class="feature">
               <i class="fas fa-procedures"></i>
-              <span>300+ Beds</span>
+              <span>983 Beds</span>
             </div>
             <div class="feature">
               <i class="fas fa-ambulance"></i>
@@ -686,7 +707,7 @@
           </div>
           <div class="availability">
             <span>Doctors Available</span>
-            <span class="doctor-count">18</span>
+            <span class="doctor-count">85</span>
           </div>
         </div>
       </div>
@@ -695,10 +716,10 @@
       <div class="hospital-card">
         <div class="premium-badge">Premium</div>
         <div class="hospital-img">
-          <img src="/api/placeholder/400/320" alt="Sunrise Medical Center">
+          <img src="https://dghs.mohfw.gov.in/mainsitedghs/uploads/assets/iRE4A8ad6Jxe7eNVcpcR2LZjnwhCRhfp62Pq6qFW.jpg" alt="Safdarjung Hospital">
         </div>
         <div class="hospital-content">
-          <h3>Sunrise Medical Center</h3>
+          <h3>Safdarjung Hospital</h3>
           <div class="rating">
             <div class="stars">
               <i class="fas fa-star"></i>
@@ -713,7 +734,7 @@
           <div class="hospital-features">
             <div class="feature">
               <i class="fas fa-procedures"></i>
-              <span>450+ Beds</span>
+              <span>1531 Beds</span>
             </div>
             <div class="feature">
               <i class="fas fa-ambulance"></i>
@@ -721,12 +742,12 @@
             </div>
             <div class="feature">
               <i class="fas fa-utensils"></i>
-              <span>Gourmet Dining</span>
+              <span>Cafeteria</span>
             </div>
           </div>
           <div class="availability">
             <span>Doctors Available</span>
-            <span class="doctor-count">32</span>
+            <span class="doctor-count">96</span>
           </div>
         </div>
       </div>
@@ -734,10 +755,10 @@
       <!-- Hospital 4 -->
       <div class="hospital-card">
         <div class="hospital-img">
-          <img src="/api/placeholder/400/320" alt="Riverside Hospital">
+          <img src="https://medicinecolleges.in/assets/colleges/1855/bannerimage.jpg" alt="Guru Teg Bahadur Hospital">
         </div>
         <div class="hospital-content">
-          <h3>Riverside Hospital</h3>
+          <h3>Guru Teg Bahadur Hospital</h3>
           <div class="rating">
             <div class="stars">
               <i class="fas fa-star"></i>
@@ -752,7 +773,7 @@
           <div class="hospital-features">
             <div class="feature">
               <i class="fas fa-procedures"></i>
-              <span>350+ Beds</span>
+              <span>1000+ Beds</span>
             </div>
             <div class="feature">
               <i class="fas fa-ambulance"></i>
@@ -765,7 +786,7 @@
           </div>
           <div class="availability">
             <span>Doctors Available</span>
-            <span class="doctor-count">29</span>
+            <span class="doctor-count">72</span>
           </div>
         </div>
       </div>
@@ -773,10 +794,10 @@
       <!-- Hospital 5 -->
       <div class="hospital-card">
         <div class="hospital-img">
-          <img src="/api/placeholder/400/320" alt="North Valley Medical">
+          <img src="https://images.indianexpress.com/2019/08/lok-nayak.jpg" alt="Lok Nayak Hospital">
         </div>
         <div class="hospital-content">
-          <h3>North Valley Medical</h3>
+          <h3>Lok Nayak Hospital</h3>
           <div class="rating">
             <div class="stars">
               <i class="fas fa-star"></i>
@@ -791,7 +812,7 @@
           <div class="hospital-features">
             <div class="feature">
               <i class="fas fa-procedures"></i>
-              <span>250+ Beds</span>
+              <span>1800+ Beds</span>
             </div>
             <div class="feature">
               <i class="fas fa-baby"></i>
@@ -804,7 +825,7 @@
           </div>
           <div class="availability">
             <span>Doctors Available</span>
-            <span class="doctor-count">22</span>
+            <span class="doctor-count">87</span>
           </div>
         </div>
       </div>
@@ -813,10 +834,10 @@
       <div class="hospital-card">
         <div class="premium-badge">Premium</div>
         <div class="hospital-img">
-          <img src="/api/placeholder/400/320" alt="Ocean View Hospital">
+          <img src="https://i.ytimg.com/vi/bwN__KMHIj4/hq720.jpg?sqp=-oaymwEhCK4FEIIDSFryq4qpAxMIARUAAAAAGAElAADIQj0AgKJD&rs=AOn4CLAc4dXE9RgClu-XAz-II6eMe_NLqw" alt="Deep Chand Bandhu Government Hospital">
         </div>
         <div class="hospital-content">
-          <h3>Ocean View Hospital</h3>
+          <h3>Deep Chand Bandhu Government Hospital</h3>
           <div class="rating">
             <div class="stars">
               <i class="fas fa-star"></i>
@@ -831,7 +852,7 @@
           <div class="hospital-features">
             <div class="feature">
               <i class="fas fa-procedures"></i>
-              <span>200+ Beds</span>
+              <span>640+ Beds</span>
             </div>
             <div class="feature">
               <i class="fas fa-brain"></i>
@@ -844,7 +865,7 @@
           </div>
           <div class="availability">
             <span>Doctors Available</span>
-            <span class="doctor-count">15</span>
+            <span class="doctor-count">53</span>
           </div>
         </div>
       </div>
@@ -852,10 +873,10 @@
       <!-- Hospital 7 -->
       <div class="hospital-card">
         <div class="hospital-img">
-          <img src="/api/placeholder/400/320" alt="Central Care Hospital">
+          <img src="https://images.jdmagicbox.com/v2/comp/delhi/i5/011pxx11.xx11.170125085238.w1i5/catalogue/dr-tanvi-yadav-charak-palika-hospital--moti-bagh-delhi-dentists-mEg3JLhFzi.jpg" alt="Charak Palika Hospital">
         </div>
         <div class="hospital-content">
-          <h3>Central Care Hospital</h3>
+          <h3>Charak Palika Hospital</h3>
           <div class="rating">
             <div class="stars">
               <i class="fas fa-star"></i>
@@ -870,7 +891,7 @@
           <div class="hospital-features">
             <div class="feature">
               <i class="fas fa-procedures"></i>
-              <span>600+ Beds</span>
+              <span>450+ Beds</span>
             </div>
             <div class="feature">
               <i class="fas fa-ambulance"></i>
@@ -888,43 +909,199 @@
         </div>
       </div>
       
-      <!-- Hospital 8 -->
-      <div class="hospital-card">
-        <div class="hospital-img">
-          <img src="/api/placeholder/400/320" alt="Hillside Medical Center">
-        </div>
-        <div class="hospital-content">
-          <h3>Hillside Medical Center</h3>
-          <div class="rating">
-            <div class="stars">
-              <i class="fas fa-star"></i>
-              <i class="fas fa-star"></i>
-              <i class="fas fa-star"></i>
-              <i class="fas fa-star"></i>
-              <i class="far fa-star"></i>
-            </div>
-            <span class="review-count">(342 reviews)</span>
-          </div>
-          <span class="specialty">Women's Health</span>
-          <div class="hospital-features">
-            <div class="feature">
-              <i class="fas fa-procedures"></i>
-              <span>300+ Beds</span>
-            </div>
-            <div class="feature">
-              <i class="fas fa-baby-carriage"></i>
-              <span>Maternity</span>
-            </div>
-            <div class="feature">
-              <i class="fas fa-spa"></i>
-              <span>Wellness Center</span>
-            </div>
-          </div>
-          <div class="availability">
-            <span>Doctors Available</span>
-            <span class="doctor-count">24</span>
-          </div>
-        </div>
+ <!-- Hospital 8 -->
+<div class="hospital-card">
+  <div class="hospital-img">
+    <img src="https://content.jdmagicbox.com/v2/comp/delhi/f3/011pxx11.xx11.170712115850.k6f3/catalogue/dr-biplab-mukhopadhyay-deen-dayal-upadhyay-hospital--hari-nagar-delhi-gynaecologist-and-obstetrician-doctors-pNOdCLDqQ8.jpg" alt="Deen Dayal Upadhyay Hospital">
+  </div>
+  <div class="hospital-content">
+    <h3>Deen Dayal Upadhyay Hospital</h3>
+    <div class="rating">
+      <div class="stars">
+        <i class="fas fa-star"></i>
+        <i class="fas fa-star"></i>
+        <i class="fas fa-star"></i>
+        <i class="fas fa-star"></i>
+        <i class="fas fa-star-half-alt"></i>
       </div>
-      
-      <!-- Hospital 9 -->
+      <span class="review-count">(689 reviews)</span>
+    </div>
+    <span class="specialty">General Medicine</span>
+    <div class="hospital-features">
+      <div class="feature">
+        <i class="fas fa-procedures"></i>
+        <span>500+ Beds</span>
+      </div>
+      <div class="feature">
+        <i class="fas fa-heartbeat"></i>
+        <span>Cardiac Care</span>
+      </div>
+      <div class="feature">
+        <i class="fas fa-user-md"></i>
+        <span>24/7 Emergency</span>
+      </div>
+    </div>
+    <div class="availability">
+      <span>Doctors Available</span>
+      <span class="doctor-count">58</span>
+    </div>
+  </div>
+</div>
+
+<!-- Hospital 9 -->
+<div class="hospital-card">
+  <div class="hospital-img">
+    <img src="https://cdn.dnaindia.com/sites/default/files/styles/full/public/2018/07/30/711204-aruna-asif-ali-hospital.jpg" alt="Aruna Asaf Ali Government Hospital">
+  </div>
+  <div class="hospital-content">
+    <h3>Aruna Asaf Ali Government Hospital</h3>
+    <div class="rating">
+      <div class="stars">
+        <i class="fas fa-star"></i>
+        <i class="fas fa-star"></i>
+        <i class="fas fa-star"></i>
+        <i class="fas fa-star"></i>
+        <i class="far fa-star"></i>
+      </div>
+      <span class="review-count">(482 reviews)</span>
+    </div>
+    <span class="specialty">Surgical Care</span>
+    <div class="hospital-features">
+      <div class="feature">
+        <i class="fas fa-procedures"></i>
+        <span>300+ Beds</span>
+      </div>
+      <div class="feature">
+        <i class="fas fa-stethoscope"></i>
+        <span>Specialized Surgeries</span>
+      </div>
+      <div class="feature">
+        <i class="fas fa-ambulance"></i>
+        <span>Ambulance Services</span>
+      </div>
+    </div>
+    <div class="availability">
+      <span>Doctors Available</span>
+      <span class="doctor-count">35</span>
+    </div>
+  </div>
+</div>
+
+<!-- Hospital 10 -->
+<div class="hospital-card">
+  <div class="hospital-img">
+    <img src="https://medicaldialogues.in/h-upload/2022/06/30/750x450_179702-553694.webp" alt="Chacha Nehru Bal Chikitsalaya">
+  </div>
+  <div class="hospital-content">
+    <h3>Chacha Nehru Bal Chikitsalaya</h3>
+    <div class="rating">
+      <div class="stars">
+        <i class="fas fa-star"></i>
+        <i class="fas fa-star"></i>
+        <i class="fas fa-star"></i>
+        <i class="fas fa-star"></i>
+        <i class="fas fa-star"></i>
+      </div>
+      <span class="review-count">(721 reviews)</span>
+    </div>
+    <span class="specialty">Pediatrics</span>
+    <div class="hospital-features">
+      <div class="feature">
+        <i class="fas fa-procedures"></i>
+        <span>200+ Beds</span>
+      </div>
+      <div class="feature">
+        <i class="fas fa-baby"></i>
+        <span>Neonatal Care</span>
+      </div>
+      <div class="feature">
+        <i class="fas fa-user-md"></i>
+        <span>Pediatric Specialists</span>
+      </div>
+    </div>
+    <div class="availability">
+      <span>Doctors Available</span>
+      <span class="doctor-count">28</span>
+    </div>
+  </div>
+</div>
+
+<!-- Hospital 11 -->
+<div class="hospital-card">
+  <div class="hospital-img">
+    <img src="https://medicaldialogues.in/h-upload/2021/08/13/158899-dr-baba-saheb-ambedkar-hospital.webp" alt="Dr. Baba Saheb Ambedkar Hospital">
+  </div>
+  <div class="hospital-content">
+    <h3>Dr. Baba Saheb Ambedkar Hospital</h3>
+    <div class="rating">
+      <div class="stars">
+        <i class="fas fa-star"></i>
+        <i class="fas fa-star"></i>
+        <i class="fas fa-star"></i>
+        <i class="fas fa-star"></i>
+        <i class="far fa-star"></i>
+      </div>
+      <span class="review-count">(608 reviews)</span>
+    </div>
+    <span class="specialty">Multi-Specialty</span>
+    <div class="hospital-features">
+      <div class="feature">
+        <i class="fas fa-procedures"></i>
+        <span>700+ Beds</span>
+      </div>
+      <div class="feature">
+        <i class="fas fa-heart"></i>
+        <span>Cardiology</span>
+      </div>
+      <div class="feature">
+        <i class="fas fa-x-ray"></i>
+        <span>Radiology</span>
+      </div>
+    </div>
+    <div class="availability">
+      <span>Doctors Available</span>
+      <span class="doctor-count">65</span>
+    </div>
+  </div>
+</div>
+
+<!-- Hospital 12 -->
+<div class="hospital-card">
+  <div class="hospital-img">
+    <img src="https://images.jdmagicbox.com/v2/comp/delhi/30/011pclr20081222iro44d1853330/catalogue/dr-r-j-ram-khichripur-mayur-vihar-phase-2-delhi-dermatologists-6kvenw0oey.jpg" alt="Lal Bahadur Shastri Hospital">
+  </div>
+  <div class="hospital-content">
+    <h3>Lal Bahadur Shastri Hospital</h3>
+    <div class="rating">
+      <div class="stars">
+        <i class="fas fa-star"></i>
+        <i class="fas fa-star"></i>
+        <i class="fas fa-star"></i>
+        <i class="fas fa-star"></i>
+        <i class="fas fa-star-half-alt"></i>
+      </div>
+      <span class="review-count">(549 reviews)</span>
+    </div>
+    <span class="specialty">Orthopedics</span>
+    <div class="hospital-features">
+      <div class="feature">
+        <i class="fas fa-procedures"></i>
+        <span>350+ Beds</span>
+      </div>
+      <div class="feature">
+        <i class="fas fa-bone"></i>
+        <span>Bone & Joint Care</span>
+      </div>
+      <div class="feature">
+        <i class="fas fa-stethoscope"></i>
+        <span>Advanced Diagnosis</span>
+      </div>
+    </div>
+    <div class="availability">
+      <span>Doctors Available</span>
+      <span class="doctor-count">40</span>
+    </div>
+  </div>
+</div>
+<script src="https://cdn.botpress.cloud/webchat/v2.2/inject.js"></script>
+<script src="https://files.bpcontent.cloud/2025/03/13/12/20250313121248-5SCV8G7S.js"></script>
