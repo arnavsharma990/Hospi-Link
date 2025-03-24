@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hospilinks</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        body { font-family: 'Poppins', sans-serif; text-align: center; background-color: #f8fafc; color: #334155; }
+        .container { width: 50%; margin: auto; padding: 20px; background: white; border-radius: 10px; box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); }
+        .hidden { display: none; }
+        button { padding: 12px 20px; margin: 10px; border: none; cursor: pointer; border-radius: 5px; font-weight: 600; }
+        .doctor-btn { background-color: #0284c7; color: white; transition: 0.3s; }
+        .doctor-btn:hover { background-color: #0369a1; }
+        #next-step { background-color: #f59e0b; color: white; transition: 0.3s; }
+        #next-step:hover { background-color: #d97706; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>AIIMS Hospital</h1>
+        <div id="doctor-list">
+            <h2>Select a Doctor</h2>
+            <div id="doctors"></div>
+        </div>
+        <div id="flow" class="hidden">
+            <h2>Consultation Flow</h2>
+            <p id="step-text"></p>
+            <button id="next-step">Next</button>
+        </div>
+    </div>
+    <script>
+        const doctors = ["Dr. Mohan singh", "Dr. Balwinder lamba","Dr. Neha jaiswal","Dr. Kamal garg"];
+        const steps = ["Weight Measurement", "Blood Test", "Doctor Room"];
+        let stepIndex = 0;
+        let selectedDoctor = "";
+
+        document.addEventListener("DOMContentLoaded", () => {
+            const doctorsDiv = document.getElementById("doctors");
+            const flowDiv = document.getElementById("flow");
+            const stepText = document.getElementById("step-text");
+            const nextStepButton = document.getElementById("next-step");
+            
+            doctors.forEach(doctor => {
+                const doctorBtn = document.createElement("button");
+                doctorBtn.textContent = doctor;
+                doctorBtn.classList.add("doctor-btn");
+                doctorBtn.addEventListener("click", () => {
+                    selectedDoctor = doctor;
+                    document.getElementById("doctor-list").classList.add("hidden");
+                    flowDiv.classList.remove("hidden");
+                    stepIndex = 0;
+                    stepText.textContent = `Step ${stepIndex+1}: ${steps[stepIndex]}`;
+                });
+                doctorsDiv.appendChild(doctorBtn);
+            });
+            
+            nextStepButton.addEventListener("click", () => {
+                if (stepIndex < steps.length - 1) {
+                    stepIndex++;
+                    stepText.textContent = `Step ${stepIndex+1}: ${steps[stepIndex]}`;
+                } else {
+                    alert("Consultation completed for " + selectedDoctor);
+                    location.reload();
+                }
+            });
+        });
+    </script>
+    
+</body>
+</html>
