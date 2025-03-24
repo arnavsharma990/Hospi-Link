@@ -7,9 +7,10 @@
     <link rel="stylesheet" href="styles.css">
     <style>
         body { font-family: 'Poppins', sans-serif; text-align: center; background-color: #f8fafc; color: #334155; }
-        .container { width: 50%; margin: auto; padding: 20px; background: white; border-radius: 10px; box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); }
+        .container { width: 50%; margin: auto; padding: 20px; background: white; border-radius: 10px; box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); height: 70vh; }
         .hidden { display: none; }
         button { padding: 12px 20px; margin: 10px; border: none; cursor: pointer; border-radius: 5px; font-weight: 600; }
+        button{height: 10vh;}
         .doctor-btn { background-color: #0284c7; color: white; transition: 0.3s; }
         .doctor-btn:hover { background-color: #0369a1; }
         #next-step { background-color: #f59e0b; color: white; transition: 0.3s; }
@@ -52,7 +53,7 @@
                     document.getElementById("doctor-list").classList.add("hidden");
                     flowDiv.classList.remove("hidden");
                     stepIndex = 0;
-                    room.textcontent=`Room no. 10${stepIndex+1}`;
+                    room.textContent=`Room no. 10${stepIndex+1}`;
                     stepText.textContent = `Step ${stepIndex+1}: ${steps[stepIndex]}`;
                 });
                 doctorsDiv.appendChild(doctorBtn);
@@ -61,7 +62,7 @@
             nextStepButton.addEventListener("click", () => {
                 if (stepIndex < steps.length - 1) {
                     stepIndex++;
-                    room.textcontent=`Room no. 10${stepIndex+1}`;
+                    room.textContent=`Room no. 10${stepIndex+1}`;
                     stepText.textContent = `Step ${stepIndex+1}: ${steps[stepIndex]}`;
                 } else {
                     alert("Consultation completed for " + selectedDoctor);
