@@ -26,11 +26,12 @@
         <div id="flow" class="hidden">
             <h2>Consultation Flow</h2>
             <p id="step-text"></p>
+            <p id="room"></p>
             <button id="next-step">Next</button>
         </div>
     </div>
     <script>
-        const doctors = ["Dr. Mohan singh", "Dr. Balwinder lamba","Dr. Neha jaiswal","Dr. Kamal garg"];
+        const doctors = ["Dr. Mohan singh", "Dr. Balwinder lamba","Dr. Neha jaiswal","Dr. Kamal garg","Dr. Parul agarwal"];
         const steps = ["Weight Measurement", "Blood Test", "Doctor Room"];
         let stepIndex = 0;
         let selectedDoctor = "";
@@ -40,6 +41,7 @@
             const flowDiv = document.getElementById("flow");
             const stepText = document.getElementById("step-text");
             const nextStepButton = document.getElementById("next-step");
+            const room = document.getElementById("room");
             
             doctors.forEach(doctor => {
                 const doctorBtn = document.createElement("button");
@@ -50,6 +52,7 @@
                     document.getElementById("doctor-list").classList.add("hidden");
                     flowDiv.classList.remove("hidden");
                     stepIndex = 0;
+                    room.textcontent=`Room no. 10${stepIndex+1}`;
                     stepText.textContent = `Step ${stepIndex+1}: ${steps[stepIndex]}`;
                 });
                 doctorsDiv.appendChild(doctorBtn);
@@ -58,6 +61,7 @@
             nextStepButton.addEventListener("click", () => {
                 if (stepIndex < steps.length - 1) {
                     stepIndex++;
+                    room.textcontent=`Room no. 10${stepIndex+1}`;
                     stepText.textContent = `Step ${stepIndex+1}: ${steps[stepIndex]}`;
                 } else {
                     alert("Consultation completed for " + selectedDoctor);
