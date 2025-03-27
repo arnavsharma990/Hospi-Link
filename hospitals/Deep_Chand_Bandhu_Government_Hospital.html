@@ -1,0 +1,503 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Deep Chand Bandhu Government Hospital - Doctors Directory</title>
+  <style>
+    /* Design System Variables */
+    :root {
+      --primary: #0c4a6e;
+      --primary-light: #0ea5e9;
+      --accent: #06b6d4;
+      --light: #f8fafc;
+      --light-gray: #f1f5f9;
+      --dark: #1e293b;
+      --dark-gray: #334155;
+      --success: #10b981;
+      --danger: #ef4444;
+      --warning: #f59e0b;
+      --white: #ffffff;
+      --shadow-sm: 0 4px 6px rgba(0, 0, 0, 0.05);
+      --shadow-md: 0 10px 15px -3px rgba(0, 0, 0, 0.08), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+      --shadow-lg: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+      --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Poppins', sans-serif;
+      background-color: var(--light);
+      color: var(--dark);
+      line-height: 1.7;
+    }
+
+    /* Navigation */
+    nav {
+      background-color: white;
+      padding: 1rem 2rem;
+      box-shadow: var(--shadow-sm);
+      position: static;
+      top: 0;
+      z-index: 100;
+    }
+
+    .nav-container {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      max-width: 1400px;
+      margin: 0 auto;
+    }
+
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      font-weight: 700;
+      font-size: 1.5rem;
+      color: var(--primary);
+      text-decoration: none;
+    }
+
+    .logo i {
+      color: var(--primary-light);
+    }
+
+    /* Hospital Header */
+    .hospital-header {
+      background: linear-gradient(to right, rgba(12, 74, 110, 0.9), rgba(6, 182, 212, 0.8)),
+                  url("https://www.newdelhitimes.com/wp-content/uploads/2021/01/GTB-Hospital.jpg");
+      background-size: cover;
+      background-position: center;
+      color: var(--white);
+      padding: 4rem 2rem;
+      text-align: center;
+    }
+
+    .hospital-header h1 {
+      font-size: 2.5rem;
+      margin-bottom: 1rem;
+    }
+
+    .hospital-stats {
+      display: flex;
+      justify-content: center;
+      gap: 3rem;
+      margin-top: 2rem;
+    }
+
+    .stat-item {
+      text-align: center;
+    }
+
+    .stat-number {
+      font-size: 2rem;
+      font-weight: 700;
+      color: var(--white);
+    }
+
+    .stat-label {
+      font-size: 0.9rem;
+      opacity: 0.9;
+    }
+
+    /* Doctors Section */
+    .doctors-section {
+      max-width: 1400px;
+      margin: 4rem auto;
+      padding: 0 2rem;
+    }
+
+    .section-title {
+      text-align: center;
+      margin-bottom: 3rem;
+      font-size: 2rem;
+      color: var(--primary);
+    }
+
+    .doctors-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 2rem;
+    }
+
+    .doctor-card {
+      background: var(--white);
+      border-radius: 1rem;
+      overflow: hidden;
+      box-shadow: var(--shadow-md);
+      transition: var(--transition);
+      cursor: pointer;
+    }
+
+    .doctor-card:hover {
+      transform: translateY(-5px);
+      box-shadow: var(--shadow-lg);
+    }
+
+    .doctor-img {
+      width: 100%;
+      height: 250px;
+      object-fit: cover;
+    }
+
+    .doctor-info {
+      padding: 1.5rem;
+    }
+
+    .doctor-name {
+      font-size: 1.25rem;
+      font-weight: 600;
+      margin-bottom: 0.5rem;
+      color: var(--dark);
+    }
+
+    .doctor-specialty {
+      color: var(--primary-light);
+      font-weight: 500;
+      margin-bottom: 1rem;
+    }
+
+    .doctor-details {
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+      margin-bottom: 1.5rem;
+    }
+
+    .detail-item {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      font-size: 0.9rem;
+      color: var(--dark-gray);
+    }
+
+    .detail-item i {
+      color: var(--primary-light);
+    }
+
+    .doctor-cta {
+      background: linear-gradient(to right, var(--primary), var(--primary-light));
+      color: var(--white);
+      text-decoration: none;
+      padding: 0.75rem 1.5rem;
+      border-radius: 0.5rem;
+      display: inline-block;
+      font-weight: 500;
+      transition: var(--transition);
+    }
+
+    .doctor-cta:hover {
+      transform: translateY(-2px);
+      box-shadow: var(--shadow-sm);
+    }
+
+    /* Navigation Modal */
+    .modal {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.5);
+      z-index: 1000;
+    }
+
+    .modal-content {
+      background: var(--white);
+      border-radius: 1rem;
+      padding: 2rem;
+      width: 90%;
+      max-width: 600px;
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+    }
+
+    .close-modal {
+      position: absolute;
+      top: 1rem;
+      right: 1rem;
+      font-size: 1.5rem;
+      cursor: pointer;
+      color: var(--dark-gray);
+    }
+
+    .navigation-list {
+      list-style: none;
+      margin-top: 1rem;
+    }
+
+    .navigation-item {
+      padding: 1rem;
+      border-bottom: 1px solid var(--light-gray);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .navigation-item:last-child {
+      border-bottom: none;
+    }
+
+    .location-name {
+      font-weight: 500;
+      color: var(--dark);
+    }
+
+    .room-number {
+      color: var(--primary-light);
+      font-weight: 600;
+    }
+
+    @media (max-width: 768px) {
+      .hospital-stats {
+        flex-direction: column;
+        gap: 1.5rem;
+      }
+
+      .doctors-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- Navigation -->
+  <nav>
+    <div class="nav-container">
+      <a href="index.html" class="logo">
+        <span>Hospilinks</span>
+      </a>
+    </div>
+  </nav>
+
+  <!-- Hospital Header -->
+  <header class="hospital-header">
+    <h1>Deep Chand Bandhu Government Hospital</h1>
+    <p>Premier Government Hospital in New Delhi</p>
+    <div class="hospital-stats">
+      <div class="stat-item">
+        <div class="stat-number">800+</div>
+        <div class="stat-label">Hospital Beds</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-number">70+</div>
+        <div class="stat-label">Specialist Doctors</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-number">24/7</div>
+        <div class="stat-label">Emergency Services</div>
+      </div>
+    </div>
+  </header>
+
+  <!-- Doctors Section -->
+  <section class="doctors-section">
+    <h2 class="section-title">Our Specialist Doctors</h2>
+    <div class="doctors-grid">
+      <!-- Doctor 1 -->
+      <div class="doctor-card" onclick="showNavigation('Dr. Amit Khanna')">
+        <img src="https://images.unsplash.com/photo-1622253692010-333f2da6031d?w=800" alt="Dr. Amit Khanna" class="doctor-img">
+        <div class="doctor-info">
+          <h3 class="doctor-name">Dr. Amit Khanna</h3>
+          <p class="doctor-specialty">Cardiology</p>
+          <div class="doctor-details">
+            <div class="detail-item">
+              <span>MBBS, MD (Cardiology)</span>
+            </div>
+            <div class="detail-item">
+              <i class="fas fa-clock"></i>
+              <span>Mon-Fri: 9:00 AM - 2:00 PM</span>
+            </div>
+            <div class="detail-item">
+              <span>4.9 (520+ reviews)</span>
+            </div>
+          </div>
+          <a href="#" class="doctor-cta">See Consultation Way</a>
+        </div>
+      </div>
+
+      <!-- Doctor 2 -->
+      <div class="doctor-card" onclick="showNavigation('Dr. Priya Malhotra')">
+        <img src="https://images.unsplash.com/photo-1594824476967-48c8b964273f?w=800" alt="Dr. Priya Malhotra" class="doctor-img">
+        <div class="doctor-info">
+          <h3 class="doctor-name">Dr. Priya Malhotra</h3>
+          <p class="doctor-specialty">Neurology</p>
+          <div class="doctor-details">
+            <div class="detail-item">
+              <span>MBBS, DM (Neurology)</span>
+            </div>
+            <div class="detail-item">
+              <i class="fas fa-clock"></i>
+              <span>Mon-Sat: 10:00 AM - 4:00 PM</span>
+            </div>
+            <div class="detail-item">
+              <i class="fas fa-star"></i>
+              <span>4.8 (480+ reviews)</span>
+            </div>
+          </div>
+          <a href="#" class="doctor-cta">See Consultation Way</a>
+        </div>
+      </div>
+
+      <!-- Doctor 3 -->
+      <div class="doctor-card" onclick="showNavigation('Dr. Rajesh Verma')">
+        <img src="https://images.unsplash.com/photo-1622253692010-333f2da6031d?w=800" alt="Dr. Rajesh Verma" class="doctor-img">
+        <div class="doctor-info">
+          <h3 class="doctor-name">Dr. Rajesh Verma</h3>
+          <p class="doctor-specialty">Orthopedics</p>
+          <div class="doctor-details">
+            <div class="detail-item">
+              <span>MBBS, MS (Ortho)</span>
+            </div>
+            <div class="detail-item">
+              <i class="fas fa-clock"></i>
+              <span>Tue-Sun: 11:00 AM - 5:00 PM</span>
+            </div>
+            <div class="detail-item">
+              <span>4.7 (390+ reviews)</span>
+            </div>
+          </div>
+          <a href="#" class="doctor-cta">See Consultation Way</a>
+        </div>
+      </div>
+
+      <!-- Doctor 4 -->
+      <div class="doctor-card" onclick="showNavigation('Dr. Ananya Kapoor')">
+        <img src="https://images.unsplash.com/photo-1527613426441-4da17471b66d?w=800" alt="Dr. Ananya Kapoor" class="doctor-img">
+        <div class="doctor-info">
+          <h3 class="doctor-name">Dr. Ananya Kapoor</h3>
+          <p class="doctor-specialty">Pediatrics</p>
+          <div class="doctor-details">
+            <div class="detail-item">
+              <span>MBBS, MD (Pediatrics)</span>
+            </div>
+            <div class="detail-item">
+              <i class="fas fa-clock"></i>
+              <span>Mon-Fri: 9:00 AM - 3:00 PM</span>
+            </div>
+            <div class="detail-item">
+              <span>4.9 (600+ reviews)</span>
+            </div>
+          </div>
+          <a href="#" class="doctor-cta">See Consultation Way</a>
+        </div>
+      </div>
+
+      <!-- Doctor 5 -->
+      <div class="doctor-card" onclick="showNavigation('Dr. Sanjay Gupta')">
+        <img src="https://images.unsplash.com/photo-1622253692010-333f2da6031d?w=800" alt="Dr. Sanjay Gupta" class="doctor-img">
+        <div class="doctor-info">
+          <h3 class="doctor-name">Dr. Sanjay Gupta</h3>
+          <p class="doctor-specialty">Oncology</p>
+          <div class="doctor-details">
+            <div class="detail-item">
+              <span>MBBS, DM (Oncology)</span>
+            </div>
+            <div class="detail-item">
+              <i class="fas fa-clock"></i>
+              <span>Wed-Mon: 10:00 AM - 4:00 PM</span>
+            </div>
+            <div class="detail-item">
+              <span>4.8 (450+ reviews)</span>
+            </div>
+          </div>
+          <a href="#" class="doctor-cta">See Consultation Way</a>
+        </div>
+      </div>
+
+      <!-- Doctor 6 -->
+      <div class="doctor-card" onclick="showNavigation('Dr. Meena Sharma')">
+        <img src="https://images.unsplash.com/photo-1527613426441-4da17471b66d?w=800" alt="Dr. Meena Sharma" class="doctor-img">
+        <div class="doctor-info">
+          <h3 class="doctor-name">Dr. Meena Sharma</h3>
+          <p class="doctor-specialty">Dermatology</p>
+          <div class="doctor-details">
+            <div class="detail-item">
+              <span>MBBS, MD (Dermatology)</span>
+            </div>
+            <div class="detail-item">
+              <span>Mon-Sat: 11:00 AM - 5:00 PM</span>
+            </div>
+            <div class="detail-item">
+              <span>4.9 (550+ reviews)</span>
+            </div>
+          </div>
+          <a href="#" class="doctor-cta">See Consultation Way</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Navigation Modal -->
+  <div id="navigationModal" class="modal">
+    <div class="modal-content">
+      <span class="close-modal" onclick="closeModal()">&times;</span>
+      <h2 id="modalTitle">Doctor's Navigation</h2>
+      <ul class="navigation-list">
+        <li class="navigation-item">
+          <span class="location-name">Weight Measurement</span>
+          <span class="room-number">Room 101</span>
+        </li>
+        <li class="navigation-item">
+          <span class="location-name">Blood Pressure Check</span>
+          <span class="room-number">Room 102</span>
+        </li>
+        <li class="navigation-item">
+          <span class="location-name">Temperature Check</span>
+          <span class="room-number">Room 103</span>
+        </li>
+        <li class="navigation-item">
+          <span class="location-name">Doctor's Chamber</span>
+          <span id="doctorRoom" class="room-number">Room 201</span>
+        </li>
+      </ul>
+    </div>
+  </div>
+
+  <script>
+    function showNavigation(doctorName) {
+      const modal = document.getElementById('navigationModal');
+      const modalTitle = document.getElementById('modalTitle');
+      const doctorRoom = document.getElementById('doctorRoom');
+      
+      // Assign different rooms for different doctors
+      const roomMap = {
+        'Dr. Amit Khanna': 'Room 201',
+        'Dr. Priya Malhotra': 'Room 202',
+        'Dr. Rajesh Verma': 'Room 203',
+        'Dr. Ananya Kapoor': 'Room 204',
+        'Dr. Sanjay Gupta': 'Room 205',
+        'Dr. Meena Sharma': 'Room 206'
+      };
+
+      modalTitle.textContent = `${doctorName}'s Navigation`;
+      doctorRoom.textContent = roomMap[doctorName];
+      modal.style.display = 'block';
+    }
+
+    function closeModal() {
+      const modal = document.getElementById('navigationModal');
+      modal.style.display = 'none';
+    }
+
+    // Close modal when clicking outside
+    window.onclick = function(event) {
+      const modal = document.getElementById('navigationModal');
+      if (event.target == modal) {
+        modal.style.display = 'none';
+      }
+    }
+  </script>
+</body>
+</html>
