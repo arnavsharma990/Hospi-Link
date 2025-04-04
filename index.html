@@ -215,125 +215,116 @@
 
   <script>
     document.addEventListener('DOMContentLoaded', function() {
-      // Create particles
-      createParticles();
-      createPulseCircles();
-      
-      // Start animation sequence
-      setTimeout(hideLoadingOverlay, 1100);
-      
-      // Enter button event
-      document.querySelector('.enter-button').addEventListener('click', finishIntro);
-    });
+  // Create particles
+  createParticles();
+  createPulseCircles();
+  
+  // Start animation sequence
+  setTimeout(hideLoadingOverlay, 1100);
+  
+  // Remove the click event listener since we're using an anchor tag for navigation
+  // The anchor tag within the button will handle the redirection to home.html
+});
+
+function hideLoadingOverlay() {
+  const loadingOverlay = document.querySelector('.loading-overlay');
+  loadingOverlay.style.opacity = '0';
+  
+  setTimeout(() => {
+    loadingOverlay.style.display = 'none';
+    startDoorAnimation();
+  }, 500);
+}
+
+function startDoorAnimation() {
+  const doorLeft = document.querySelector('.door-left');
+  const doorRight = document.querySelector('.door-right');
+  
+  doorLeft.style.transform = 'translateX(-100%)';
+  doorRight.style.transform = 'translateX(100%)';
+  
+  setTimeout(showContent, 1000);
+}
+
+function showContent() {
+  const contentContainer = document.querySelector('.content-container');
+  contentContainer.style.opacity = '1';
+  contentContainer.style.transform = 'translateY(0)';
+  
+  const logoIcon = document.querySelector('.logo-icon');
+  logoIcon.style.transform = 'rotate(360deg)';
+  
+  setTimeout(() => {
+    const enterButton = document.querySelector('.enter-button');
+    enterButton.style.transition = 'opacity 1s ease, transform 0.5s ease, box-shadow 0.3s ease';
+    enterButton.style.opacity = '1';
+    enterButton.style.transform = 'scale(1)';
+  }, 800);
+}
+
+// This function is no longer needed since we're using an anchor tag
+// If you want to keep the fade-out effect, you can add it to the anchor click event
+
+function createParticles() {
+  const container = document.getElementById('particles');
+  
+  for (let i = 0; i < 30; i++) {
+    const particle = document.createElement('div');
+    particle.classList.add('particle');
     
-    function hideLoadingOverlay() {
-      const loadingOverlay = document.querySelector('.loading-overlay');
-      loadingOverlay.style.opacity = '0';
-      
-      setTimeout(() => {
-        loadingOverlay.style.display = 'none';
-        startDoorAnimation();
-      }, 500);
-    }
+    // Random size
+    const size = Math.random() * 15 + 5;
+    particle.style.width = `${size}px`;
+    particle.style.height = `${size}px`;
     
-    function startDoorAnimation() {
-      const doorLeft = document.querySelector('.door-left');
-      const doorRight = document.querySelector('.door-right');
-      
-      doorLeft.style.transform = 'translateX(-100%)';
-      doorRight.style.transform = 'translateX(100%)';
-      
-      setTimeout(showContent, 1000);
-    }
+    // Random position
+    particle.style.left = `${Math.random() * 100}%`;
+    particle.style.top = `${Math.random() * 100}%`;
     
-    function showContent() {
-      const contentContainer = document.querySelector('.content-container');
-      contentContainer.style.opacity = '1';
-      contentContainer.style.transform = 'translateY(0)';
-      
-      const logoIcon = document.querySelector('.logo-icon');
-      logoIcon.style.transform = 'rotate(360deg)';
-      
-      setTimeout(() => {
-        const enterButton = document.querySelector('.enter-button');
-        enterButton.style.transition = 'opacity 1s ease, transform 0.5s ease, box-shadow 0.3s ease';
-        enterButton.style.opacity = '1';
-        enterButton.style.transform = 'scale(1)';
-      }, 800);
-    }
+    // Random animation
+    const duration = Math.random() * 20 + 10;
+    particle.style.animation = `float ${duration}s infinite alternate ease-in-out`;
+    particle.style.animationDelay = `${Math.random() * 5}s`;
     
-    function finishIntro() {
-      const introAnimation = document.querySelector('.intro-animation');
-      introAnimation.style.transition = 'opacity 1s ease';
-      introAnimation.style.opacity = '0';
-      
-      setTimeout(() => {
-        introAnimation.style.display = 'none';
-        // Here you would typically redirect to the main site or reveal content
-        alert('Welcome to HospiLink - Main site content would load here');
-      }, 1000);
-    }
+    container.appendChild(particle);
+  }
+}
+
+function createPulseCircles() {
+  const container = document.getElementById('particles');
+  
+  const createPulse = () => {
+    const pulse = document.createElement('div');
+    pulse.classList.add('pulse-circle');
     
-    function createParticles() {
-      const container = document.getElementById('particles');
-      
-      for (let i = 0; i < 30; i++) {
-        const particle = document.createElement('div');
-        particle.classList.add('particle');
-        
-        // Random size
-        const size = Math.random() * 15 + 5;
-        particle.style.width = `${size}px`;
-        particle.style.height = `${size}px`;
-        
-        // Random position
-        particle.style.left = `${Math.random() * 100}%`;
-        particle.style.top = `${Math.random() * 100}%`;
-        
-        // Random animation
-        const duration = Math.random() * 20 + 10;
-        particle.style.animation = `float ${duration}s infinite alternate ease-in-out`;
-        particle.style.animationDelay = `${Math.random() * 5}s`;
-        
-        container.appendChild(particle);
-      }
-    }
+    // Random position
+    pulse.style.left = `${Math.random() * 100}%`;
+    pulse.style.top = `${Math.random() * 100}%`;
     
-    function createPulseCircles() {
-      const container = document.getElementById('particles');
-      
-      const createPulse = () => {
-        const pulse = document.createElement('div');
-        pulse.classList.add('pulse-circle');
-        
-        // Random position
-        pulse.style.left = `${Math.random() * 100}%`;
-        pulse.style.top = `${Math.random() * 100}%`;
-        
-        // Random size
-        const size = Math.random() * 100 + 50;
-        pulse.style.width = `${size}px`;
-        pulse.style.height = `${size}px`;
-        
-        // Animation
-        pulse.style.animation = 'pulse 4s ease-out forwards';
-        
-        container.appendChild(pulse);
-        
-        // Remove after animation completes
-        setTimeout(() => {
-          pulse.remove();
-        }, 4000);
-      };
-      
-      // Create initial pulses
-      for (let i = 0; i < 5; i++) {
-        setTimeout(createPulse, i * 800);
-      }
-      
-      // Continue creating pulses every 2 seconds
-      setInterval(createPulse, 2000);
-    }
+    // Random size
+    const size = Math.random() * 100 + 50;
+    pulse.style.width = `${size}px`;
+    pulse.style.height = `${size}px`;
+    
+    // Animation
+    pulse.style.animation = 'pulse 4s ease-out forwards';
+    
+    container.appendChild(pulse);
+    
+    // Remove after animation completes
+    setTimeout(() => {
+      pulse.remove();
+    }, 4000);
+  };
+  
+  // Create initial pulses
+  for (let i = 0; i < 5; i++) {
+    setTimeout(createPulse, i * 800);
+  }
+  
+  // Continue creating pulses every 2 seconds
+  setInterval(createPulse, 2000);
+}
   </script>
 </body>
 </html>
