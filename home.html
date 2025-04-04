@@ -1116,5 +1116,221 @@
     </div>
   </div>
 </div></a>
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+  // Get the search input and button
+  const searchInput = document.querySelector('.search-input');
+  const searchBtn = document.querySelector('.search-btn');
+  const hospitalCards = document.querySelectorAll('.hospital-card');
+  
+  // Create and append recommendations container
+  const searchContainer = document.querySelector('.search-container');
+  const recommendationsContainer = document.createElement('div');
+  recommendationsContainer.className = 'search-recommendations';
+  recommendationsContainer.style.display = 'none';
+  recommendationsContainer.style.position = 'absolute';
+  recommendationsContainer.style.top = '100%';
+  recommendationsContainer.style.left = '0';
+  recommendationsContainer.style.width = '100%';
+  recommendationsContainer.style.maxHeight = '250px';
+  recommendationsContainer.style.overflowY = 'auto';
+  recommendationsContainer.style.backgroundColor = '#fff';
+  recommendationsContainer.style.boxShadow = '0 4px 10px rgba(0,0,0,0.1)';
+  recommendationsContainer.style.borderRadius = '0 0 10px 10px';
+  recommendationsContainer.style.zIndex = '100';
+  searchContainer.style.position = 'relative';
+  searchContainer.appendChild(recommendationsContainer);
+  
+  // Collect all searchable terms
+  const searchTerms = {
+    hospitals: [],
+    specialties: [],
+    features: []
+  };
+  
+  // Populate searchable terms
+  hospitalCards.forEach(card => {
+    // Hospital names
+    const hospitalName = card.querySelector('h3').textContent.trim();
+    searchTerms.hospitals.push(hospitalName);
+    
+    // Specialties
+    const specialty = card.querySelector('.specialty').textContent.trim();
+    if (!searchTerms.specialties.includes(specialty)) {
+      searchTerms.specialties.push(specialty);
+    }
+    
+    // Features
+    const features = card.querySelectorAll('.feature span');
+    features.forEach(feature => {
+      const featureText = feature.textContent.trim();
+      if (!searchTerms.features.includes(featureText)) {
+        searchTerms.features.push(featureText);
+      }
+    });
+  });
+  
+  // Function to show recommendations
+  function showRecommendations() {
+    const searchTerm = searchInput.value.trim().toLowerCase();
+    
+    // Clear previous recommendations
+    recommendationsContainer.innerHTML = '';
+    
+    if (searchTerm.length < 2) {
+      recommendationsContainer.style.display = 'none';
+      return;
+    }
+    
+    // Create arrays for matching terms
+    const matchingHospitals = searchTerms.hospitals.filter(hospital => 
+      hospital.toLowerCase().includes(searchTerm)
+    );
+    
+    const matchingSpecialties = searchTerms.specialties.filter(specialty => 
+      specialty.toLowerCase().includes(searchTerm)
+    );
+    
+    const matchingFeatures = searchTerms.features.filter(feature => 
+      feature.toLowerCase().includes(searchTerm)
+    );
+    
+    // Combine all matches, limit to top 10
+    const allMatches = [
+      ...matchingHospitals.map(item => ({ text: item, type: 'Hospital' })),
+      ...matchingSpecialties.map(item => ({ text: item, type: 'Specialty' })),
+      ...matchingFeatures.map(item => ({ text: item, type: 'Feature' }))
+    ].slice(0, 10);
+    
+    // Display recommendations if we have matches
+    if (allMatches.length > 0) {
+      allMatches.forEach(match => {
+        const recommendation = document.createElement('div');
+        recommendation.className = 'search-recommendation-item';
+        recommendation.style.padding = '10px 15px';
+        recommendation.style.cursor = 'pointer';
+        recommendation.style.transition = 'background-color 0.2s';
+        recommendation.style.display = 'flex';
+        recommendation.style.justifyContent = 'space-between';
+        recommendation.style.alignItems = 'center';
+        recommendation.style.borderBottom = '1px solid #f1f5f9';
+        
+        // Create main text
+        const textSpan = document.createElement('span');
+        textSpan.textContent = match.text;
+        
+        // Create type badge
+        const typeSpan = document.createElement('span');
+        typeSpan.textContent = match.type;
+        typeSpan.style.fontSize = '0.75rem';
+        typeSpan.style.backgroundColor = match.type === 'Hospital' ? '#0ea5e9' : 
+                                        match.type === 'Specialty' ? '#10b981' : '#f59e0b';
+        typeSpan.style.color = '#fff';
+        typeSpan.style.padding = '2px 8px';
+        typeSpan.style.borderRadius = '12px';
+        
+        recommendation.appendChild(textSpan);
+        recommendation.appendChild(typeSpan);
+        
+        // Hover effect
+        recommendation.addEventListener('mouseenter', () => {
+          recommendation.style.backgroundColor = '#f1f5f9';
+        });
+        
+        recommendation.addEventListener('mouseleave', () => {
+          recommendation.style.backgroundColor = '#fff';
+        });
+        
+        // Click handler
+        recommendation.addEventListener('click', () => {
+          searchInput.value = match.text;
+          recommendationsContainer.style.display = 'none';
+          performSearch();
+        });
+        
+        recommendationsContainer.appendChild(recommendation);
+      });
+      
+      recommendationsContainer.style.display = 'block';
+    } else {
+      recommendationsContainer.style.display = 'none';
+    }
+  }
+  
+  // Function to perform search
+  function performSearch() {
+    const searchTerm = searchInput.value.trim().toLowerCase();
+    
+    // Hide recommendations
+    recommendationsContainer.style.display = 'none';
+    
+    // If search term is empty, show all hospitals
+    if (searchTerm === '') {
+      hospitalCards.forEach(card => {
+        card.parentElement.style.display = 'block';
+      });
+      return;
+    }
+    
+    // Filter hospitals based on search term
+    hospitalCards.forEach(card => {
+      const hospitalName = card.querySelector('h3').textContent.trim().toLowerCase();
+      const specialty = card.querySelector('.specialty').textContent.trim().toLowerCase();
+      const features = card.querySelectorAll('.feature span');
+      
+      // Check if search term matches hospital name, specialty, or features
+      let matchFound = hospitalName.includes(searchTerm) || specialty.includes(searchTerm);
+      
+      // Check features
+      if (!matchFound) {
+        features.forEach(feature => {
+          if (feature.textContent.trim().toLowerCase().includes(searchTerm)) {
+            matchFound = true;
+          }
+        });
+      }
+      
+      // Show or hide the card based on match
+      if (matchFound) {
+        card.parentElement.style.display = 'block';
+      } else {
+        card.parentElement.style.display = 'none';
+      }
+    });
+    
+    // Reset filter buttons
+    document.querySelectorAll('.filter-btn').forEach(btn => {
+      btn.classList.remove('active');
+    });
+    document.querySelector('.filter-btn').classList.add('active');
+  }
+  
+  // Event listeners
+  searchInput.addEventListener('input', showRecommendations);
+  searchBtn.addEventListener('click', performSearch);
+  searchInput.addEventListener('keypress', function(e) {
+    if (e.key === 'Enter') {
+      performSearch();
+    }
+  });
+  
+  // Close recommendations when clicking outside
+  document.addEventListener('click', function(e) {
+    if (!searchContainer.contains(e.target)) {
+      recommendationsContainer.style.display = 'none';
+    }
+  });
+});
+</script>
+
+
 <script src="https://cdn.botpress.cloud/webchat/v2.2/inject.js"></script>
 <script src="https://files.bpcontent.cloud/2025/03/13/12/20250313121248-5SCV8G7S.js"></script>
+
+<style>
+
+  a{
+    text-decoration: none;
+    color: inherit;
+  }
+</style>
